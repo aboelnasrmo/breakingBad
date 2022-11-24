@@ -1,14 +1,25 @@
+import 'package:approutertrial/helper/constants/strings.dart';
+import 'package:approutertrial/helper/router/app_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp(
+    appRouter: AppRouter(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  const MyApp({
+    Key? key,
+    required this.appRouter,
+  }) : super(key: key);
+  final AppRouter appRouter;
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: appRouter.generateRoute,
+      initialRoute: homeRoute,
+    );
   }
 }
