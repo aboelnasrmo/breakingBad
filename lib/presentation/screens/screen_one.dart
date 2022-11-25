@@ -17,7 +17,7 @@ class _ScreenOneState extends State<ScreenOne> {
   @override
   void initState() {
     super.initState();
-    allCharacters = BlocProvider.of<CharacterCubit>(context).getAllCharacters();
+    BlocProvider.of<CharacterCubit>(context).getAllCharacters();
   }
 
   Widget buildLoadedWidgets() {
@@ -69,7 +69,7 @@ class _ScreenOneState extends State<ScreenOne> {
             allCharacters = (state).characters;
             return buildLoadedWidgets();
           } else {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),
