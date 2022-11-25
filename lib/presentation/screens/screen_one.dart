@@ -10,6 +10,12 @@ class ScreenOne extends StatelessWidget {
         title: const Text('Screen One'),
         centerTitle: false,
       ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {},
+          child: Text('Run'),
+        ),
+      ),
     );
   }
 }
