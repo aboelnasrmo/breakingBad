@@ -21,7 +21,7 @@ class _ScreenOneState extends State<ScreenOne> {
     return TextField(
       controller: searchTextController,
       cursorColor: Colors.grey,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'Find a character',
         border: InputBorder.none,
         hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
@@ -58,7 +58,7 @@ class _ScreenOneState extends State<ScreenOne> {
       return [
         IconButton(
           onPressed: startSearch,
-          icon: Icon(Icons.search, color: Colors.black),
+          icon: const Icon(Icons.search, color: Colors.black),
         ),
       ];
     }

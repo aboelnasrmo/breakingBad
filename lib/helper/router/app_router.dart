@@ -1,4 +1,5 @@
 import 'package:approutertrial/business_logic/cubit/cubit/character_cubit.dart';
+import 'package:approutertrial/data/model/character_model.dart';
 import 'package:approutertrial/data/repository/character_repo.dart';
 import 'package:approutertrial/data/web_services/web_services.dart';
 import 'package:approutertrial/presentation/screens/screen_one.dart';
@@ -25,7 +26,11 @@ class AppRouter {
           ),
         );
       case secondScreen:
-        return MaterialPageRoute(builder: (_) => const ScreenTwo());
+        final character = settings.arguments as Character;
+        return MaterialPageRoute(
+            builder: (_) => ScreenTwo(
+                  character: character,
+                ));
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
