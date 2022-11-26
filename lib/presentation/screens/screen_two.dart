@@ -1,7 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:math';
+
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:approutertrial/business_logic/cubit/cubit/character_cubit.dart';
 import 'package:flutter/material.dart';
 
 import 'package:approutertrial/data/model/character_model.dart';
+import 'package:flutter_bloc/flutter_bloc%202.dart';
 
 class ScreenTwo extends StatelessWidget {
   const ScreenTwo({
@@ -59,8 +64,52 @@ class ScreenTwo extends StatelessWidget {
     );
   }
 
+  Widget checkIfQoutesAreLoaded(CharacterState state) {
+    if (state is QoutesLoaded) {
+      return displayRandomQouteOrEmptySpace(state);
+    } else {
+      return showProgressIndicator();
+    }
+  }
+
+  Widget displayRandomQouteOrEmptySpace(state) {
+    var qoutes = (state).qoutes;
+    if (qoutes.length != 0) {
+      int randomQouteIndex = Random().nextInt(qoutes.length - 1);
+      return Center(
+        child: DefaultTextStyle(
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 20, color: Colors.white, shadows: [
+            Shadow(
+              blurRadius: 7,
+              color: Colors.yellow,
+              offset: Offset(0, 0),
+            ),
+          ]),
+          child: AnimatedTextKit(
+            repeatForever: true,
+            animatedTexts: [
+              FlickerAnimatedText(qoutes[randomQouteIndex].qoute),
+            ],
+          ),
+        ),
+      );
+    } else {
+      return Container();
+    }
+  }
+
+  Widget showProgressIndicator() {
+    return const Center(
+      child: CircularProgressIndicator(
+        color: Colors.yellow,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<CharacterCubit>(context).getCharacterQoutes(character.name);
     return Scaffold(
       backgroundColor: Colors.grey,
       body: CustomScrollView(
@@ -112,6 +161,11 @@ class ScreenTwo extends StatelessWidget {
                     buildDivider(315),
                     const SizedBox(
                       height: 20,
+                    ),
+                    BlocBuilder<CharacterCubit, CharacterState>(
+                      builder: (context, state) {
+                        return checkIfQoutesAreLoaded(state);
+                      },
                     ),
                   ],
                 ),

@@ -12,6 +12,7 @@ import '../constants/strings.dart';
 class AppRouter {
   late CharactersRepository charactersRepository;
   late CharacterCubit characterCubit;
+
   AppRouter() {
     charactersRepository = CharactersRepository(WebServices());
     characterCubit = CharacterCubit(charactersRepository);
@@ -28,8 +29,11 @@ class AppRouter {
       case secondScreen:
         final character = settings.arguments as Character;
         return MaterialPageRoute(
-            builder: (_) => ScreenTwo(
-                  character: character,
+            builder: (_) => BlocProvider(
+                  create: (context) => CharacterCubit(charactersRepository),
+                  child: ScreenTwo(
+                    character: character,
+                  ),
                 ));
       default:
         return MaterialPageRoute(

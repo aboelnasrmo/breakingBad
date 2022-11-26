@@ -1,3 +1,4 @@
+import 'package:approutertrial/data/model/char_qoute.dart';
 import 'package:approutertrial/data/model/character_model.dart';
 import 'package:approutertrial/data/repository/character_repo.dart';
 import 'package:flutter/material.dart';
@@ -16,5 +17,11 @@ class CharacterCubit extends Cubit<CharacterState> {
       this.characters = characters;
     });
     return characters;
+  }
+
+  void getCharacterQoutes(String charName) {
+    charactersRepository.getCharacterQoutes(charName).then((qoutes) {
+      emit(QoutesLoaded(qoutes));
+    });
   }
 }
