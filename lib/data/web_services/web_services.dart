@@ -8,8 +8,8 @@ class WebServices {
     BaseOptions options = BaseOptions(
       baseUrl: baseUrl,
       receiveDataWhenStatusError: true,
-      connectTimeout: 5000,
-      receiveTimeout: 5000,
+      connectTimeout: const Duration(milliseconds: 5000),
+      receiveTimeout: const Duration(milliseconds: 5000),
     );
     dio = Dio(options);
   }
