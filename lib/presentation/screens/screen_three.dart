@@ -6,9 +6,9 @@ import '../../business_logic/cubit/cubit/character_cubit.dart';
 import '../../data/model/character_model.dart';
 
 class ScreenThree extends StatelessWidget {
-  ScreenThree({super.key});
-  Death? death;
-  Character? character;
+  final Death? death;
+  final Character? character;
+  const ScreenThree({this.death, this.character, super.key});
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<CharacterCubit>(context).getDeath;
@@ -17,9 +17,9 @@ class ScreenThree extends StatelessWidget {
       body: BlocBuilder<CharacterCubit, CharacterState>(
         builder: (context, state) {
           if (state is DeathLoaded) {
-            return Text('${death!.season.toString()}');
+            return Text(death!.season.toString());
           } else {
-            return Text('Nothing');
+            return const Text('Nothing');
           }
         },
       ),

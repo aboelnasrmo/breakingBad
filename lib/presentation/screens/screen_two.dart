@@ -10,9 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenTwo extends StatelessWidget {
   const ScreenTwo({
-    Key? key,
+    super.key,
     required this.character,
-  }) : super(key: key);
+  });
   final Character character;
 
   Widget buildSliverAppBar() {
