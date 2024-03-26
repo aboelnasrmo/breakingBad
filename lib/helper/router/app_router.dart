@@ -1,8 +1,10 @@
 import 'package:approutertrial/business_logic/cubit/cubit/character_cubit.dart';
 import 'package:approutertrial/data/model/character_model.dart';
+import 'package:approutertrial/data/model/death.dart';
 import 'package:approutertrial/data/repository/character_repo.dart';
 import 'package:approutertrial/data/web_services/web_services.dart';
 import 'package:approutertrial/presentation/screens/screen_one.dart';
+import 'package:approutertrial/presentation/screens/screen_three.dart';
 import 'package:approutertrial/presentation/screens/screen_two.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,12 +30,20 @@ class AppRouter {
         );
       case secondScreen:
         final character = settings.arguments as Character;
+
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => CharacterCubit(charactersRepository),
                   child: ScreenTwo(
                     character: character,
                   ),
+                ));
+
+      case 'ScreenThree':
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => CharacterCubit(charactersRepository),
+                  child: ScreenThree(),
                 ));
       default:
         return MaterialPageRoute(

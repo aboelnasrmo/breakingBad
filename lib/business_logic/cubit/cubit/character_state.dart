@@ -15,3 +15,8 @@ class QoutesLoaded extends CharacterState {
   final List<Qoute> qoutes;
   QoutesLoaded(this.qoutes);
 }
+
+class DeathLoaded extends CharacterState {
+  final List<Death> death;
+  DeathLoaded(this.death);
+}

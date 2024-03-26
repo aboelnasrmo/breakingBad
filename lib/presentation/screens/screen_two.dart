@@ -6,7 +6,7 @@ import 'package:approutertrial/business_logic/cubit/cubit/character_cubit.dart';
 import 'package:flutter/material.dart';
 
 import 'package:approutertrial/data/model/character_model.dart';
-import 'package:flutter_bloc/flutter_bloc%202.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenTwo extends StatelessWidget {
   const ScreenTwo({
@@ -110,6 +110,7 @@ class ScreenTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<CharacterCubit>(context).getCharacterQoutes(character.name);
+
     return Scaffold(
       backgroundColor: Colors.grey,
       body: CustomScrollView(

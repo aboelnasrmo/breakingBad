@@ -148,15 +148,24 @@ class _ScreenOneState extends State<ScreenOne> {
         backgroundColor: Colors.yellow,
         centerTitle: false,
       ),
-      body: BlocBuilder<CharacterCubit, CharacterState>(
-        builder: (context, state) {
-          if (state is CharacterIsloaded) {
-            allCharacters = (state).characters;
-            return buildLoadedWidgets();
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
+      body: Column(
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, 'ScreenThree');
+              },
+              child: Text('data')),
+          BlocBuilder<CharacterCubit, CharacterState>(
+            builder: (context, state) {
+              if (state is CharacterIsloaded) {
+                allCharacters = (state).characters;
+                return buildLoadedWidgets();
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
+        ],
       ),
     );
   }

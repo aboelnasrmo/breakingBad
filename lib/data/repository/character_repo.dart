@@ -17,4 +17,9 @@ class CharactersRepository {
     final qoutes = await charactersWebServices.getCharacterQoutes(charName);
     return qoutes.map((charQoute) => Qoute.fromJson(charQoute)).toList();
   }
+
+  Future<List<Qoute>> getDeath() async {
+    final deaths = await charactersWebServices.getDeath();
+    return deaths.map((death) => Qoute.fromJson(death)).toList();
+  }
 }
