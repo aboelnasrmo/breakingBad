@@ -1,6 +1,5 @@
 import 'package:approutertrial/business_logic/cubit/cubit/character_cubit.dart';
 import 'package:approutertrial/data/model/character_model.dart';
-import 'package:approutertrial/data/model/death.dart';
 import 'package:approutertrial/data/repository/character_repo.dart';
 import 'package:approutertrial/data/web_services/web_services.dart';
 import 'package:approutertrial/presentation/screens/screen_one.dart';
@@ -43,7 +42,7 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => CharacterCubit(charactersRepository),
-                  child: ScreenThree(),
+                  child: const ScreenThree(),
                 ));
       default:
         return MaterialPageRoute(
