@@ -154,7 +154,7 @@ class _ScreenOneState extends State<ScreenOne> {
               onPressed: () {
                 Navigator.pushNamed(context, 'ScreenThree');
               },
-              child: Text('data')),
+              child: const Text('data')),
           BlocBuilder<CharacterCubit, CharacterState>(
             builder: (context, state) {
               if (state is CharacterIsloaded) {

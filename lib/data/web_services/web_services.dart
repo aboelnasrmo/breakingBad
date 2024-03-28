@@ -38,7 +38,6 @@ class WebServices {
   Future<List<dynamic>> getDeath() async {
     try {
       Response response = await dio!.get('deaths');
-      print(response.data);
 
       return response.data;
     } on Exception {
