@@ -48,7 +48,12 @@ class CharacterItem extends StatelessWidget {
                     fit: BoxFit.cover,
                     placeholder: 'assets/images/loading.gif',
                     image: character.img)
-                : Image.asset('assets/images/placeholder.jpeg'),
+                : Image.asset(
+                    'assets/images/placeholder.jpeg',
+                    width: double.infinity,
+                    height: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
           ),
         ),
       ),
