@@ -16,8 +16,11 @@ class CharacterItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: InkWell(
-        onTap: () =>
-            Navigator.pushNamed(context, secondScreen, arguments: character),
+        onTap: () => Navigator.pushNamed(
+          context,
+          secondScreen,
+          arguments: character,
+        ),
         child: GridTile(
           footer: Hero(
             tag: character.charId,
